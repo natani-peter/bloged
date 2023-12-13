@@ -1,0 +1,18 @@
+{% extends 'blogs/base.html' %}
+{% load bootstrap4 %}
+
+{% block title %}
+    Register With Us
+{% endblock %}
+{% block page-header %}
+    <h2 class="h2" align="center">REGISTER YOUR ACCOUNT</h2>
+{% endblock %}
+{% block content %}
+    <form action="{% url 'users:register' %}" method="post">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% buttons %}
+            <button name="submit" class="btn btn-lg btn-primary">REGISTER</button>
+        {% endbuttons %}
+    </form>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'blogs/base.html' %}
+
+{% block title %}
+MY BLOG | ARTICLE {{ post.id }}
+{% endblock %}
+{% block page-header %}
+<h1 align="center">{{ post.title|upper }}</h1>
+{% endblock %}
+
+{% block content %}
+
+    {% if request.user == post.owner %}
+    <p><a class="btn btn-primary" href="{% url 'blogs:edit_post' post.id %}">EDIT THIS POST</a></p>
+    {% endif %}
+    <div align="center">
+    {{ article| linebreaksbr}}</div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "blogs/base.html" %}
+{% block title %}
+THE BLOGPOST
+{% endblock %}
+{% block page-header %}
+<div class="jumbotron">
+    <h1 class="display-3"><b>BLOG ABOUT EVERYTHING</b></h1>
+    <p class="lead">Make a blog about anything in the world, from politics, education, sex, casual life</p>
+    <p class="lead">Blog anything about anything</p>
+    <p class="lead"> Feel free, feel home, express your insights about world events</p>
+<p> Create an account with us to save humanity with your knowledge</p>
+<a class='btn btn-lg btn-primary' href="{% url 'users:register' %}">Register &raquo;</a>
+
+</div>
+{% endblock %}

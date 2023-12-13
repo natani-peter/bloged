@@ -1,0 +1,41 @@
+{% extends 'blogs/base.html' %}
+{% block title %}
+    BLOG | HOME
+{% endblock %}
+{% block page-header %}
+    <h1 align="center">BLOG POSTS</h1>
+{% endblock %}
+{% block content %}
+    <h3><a class="btn btn-md btn-primary" href="{% url 'blogs:add_post' %}">ADD NEW POSTS</a></h3>
+
+
+    {% for post in posts %}
+        <div class="card mb-3">
+            <div class="card-header">
+                <h4 class=" mr-auto"><a href="{% url 'blogs:article'  post.id %}">{{ post.title|title }} </a></h4>
+                <span class="ml-auto"><small>{{ post.date_added|timesince }} ago</small></span>&nbsp;&nbsp;&nbsp;
+                {% if request.user == post.owner %}
+                    <a class="btn btn-danger btn-sm" href="{% url 'blogs:delete_post' post.id %}"> DELETE</a>
+                {% endif %}
+            </div>
+
+            <div class="card-body">
+                {{ post.text|truncatechars:50|capfirst|linebreaks }}
+            </div>
+        </div>
+
+    {% empty %}
+        <div class="card mb-3">
+            <div class="card-header">
+                <h4> No Posts Yet !</h4>
+            </div>
+            <div class="card-body">
+                <p class="lead">Please add a few posts</p>
+            </div>
+        </div>
+
+
+    {% endfor %}
+
+
+{% endblock %}

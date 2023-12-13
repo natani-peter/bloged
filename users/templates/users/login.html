@@ -1,0 +1,17 @@
+{% extends 'blogs/base.html' %}
+{% load bootstrap4 %}
+{% block title %}
+LogIn
+{% endblock %}
+{% block page-header %}
+    <h2 align="center">LOG INTO YOUR ACCOUNT</h2>
+{% endblock %}
+{% block content %}
+<form action="{% url 'users:login' %}" method="post">
+{% csrf_token %}
+    {% bootstrap_form form %}
+    {% buttons %}
+<button name="submit" class="btn btn-primary btn-lg">LOG IN</button>
+{% endbuttons %}
+</form>
+{% endblock %}
